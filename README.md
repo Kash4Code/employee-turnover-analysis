@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📊 Employee Turnover and Dissatisfaction Analysis
+# 📊 Employee Turnover Analysis
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-2.x-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
@@ -91,8 +91,8 @@ employee-exit-analysis/
 
 1. **Clone the repository:**
    ```bash
-   git clone  https://github.com/Kash4Code/employee-turnover-and-dissatisfaction-analysis.git
-   cd employee-turnover-and-dissatisfaction-analysis
+   git clone  https://github.com/Kash4Code/employee-turnover-analysis.git
+   cd employee-turnover-analysis
    ```
    
 2. **Set up a virtual environment**
