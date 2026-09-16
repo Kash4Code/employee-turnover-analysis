@@ -1,124 +1,39 @@
-<div align="center">
+# Employee Turnover Analysis
 
-# 📊 Employee Turnover Analysis
+## Business Question
+Does employee turnover driven by workplace dissatisfaction increase with tenure, and if so, at which career stage is the retention risk highest?
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Pandas](https://img.shields.io/badge/Pandas-2.x-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
-[![Matplotlib](https://img.shields.io/badge/Matplotlib-3.x-11557c?style=for-the-badge&logo=python&logoColor=white)](https://matplotlib.org/)
+## Dataset
+- **Source:** [DETE exit survey](data/dete_survey.csv) and [TAFE exit survey](data/tafe_survey.csv) — Queensland, Australia public sector institutes
+- **Size:** 1,500+ combined exit survey responses
+- **Description:** Exit survey responses from two separate institutes, each using a different survey schema and column structure, requiring harmonization before joint analysis.
 
-</div>
+## Tools Used
+- Python (pandas, NumPy) — schema unification, missing value handling, and dissatisfaction index construction
+- Python (matplotlib, seaborn) — visualization
+- Jupyter Notebook — analysis workflow
 
----
+## Key Findings
+1. **Dissatisfaction-driven resignation scales with tenure, peaking mid-to-late career** — Established staff (7-10 years) resign due to dissatisfaction at ~51%, nearly double the rate of new hires under 3 years (~29%).
 
-## 📌 Business Problem & Key Objectives
-
-When employees leave an organization, understanding **why** is critical to retaining talent. However, the Department of Education, Training and Employment (**[DETE](data/dete_survey.csv)**) and the Technical and Further Education (**[TAFE](data/tafe_survey.csv)**) institute in Queensland, Australia, tracked exits using entirely different survey formats and schema.
-
-This project unifies and standardizes over 1,500 exit survey responses to identify whether employee turnover due to dissatisfaction is driven by short tenure or mid-to-late career friction.
-
-### Core Goals
-* **🧹 Unify & Clean:** Harmonize disparate survey schemas, missing values, and column names into a single clean dataset.
-* **📐 Vectorize Dissatisfaction:** Combine 9 distinct survey indicators into a unified dissatisfaction metric.
-* **🎯 Career Stage Segmentation:** Evaluate how resignation rates shift across 4 distinct service categories.
-
----
-
-## 📊 Key Insights & Visualizations
-
-### Dissatisfaction Resignation Rate by Career Stage
-
-<div align="center">
-  <img src="visuals/dissatisfaction_by_service_cat.png" alt="Dissatisfaction by Career Stage" width="750">
-</div>
-
-> [!NOTE]
-> * **Tenure Scalability:** Dissatisfaction-driven resignations scale directly with length of service. 
-> * **Experienced Drop-off:** Tenured staff (**Established** & **Veterans**) resign due to workplace dissatisfaction at nearly **double the rate** of entry-level hires.
-
----
-
-### Resignation Breakdown by Group
-
-| Career Stage | Service Length | Dissatisfaction Resignation Rate | Primary Friction Factors |
-| :--- | :--- | :---: | :--- |
-| **New** | Less than 3 years | **~29%** | Career changes, relocation, personal reasons |
-| **Experienced** | 3 to 6 years | **~34%** | Role progression, workload demands |
-| **Established** | 7 to 10 years | **~51%** | Burnout, work-life balance, environment |
-| **Veteran** | 11+ years | **~48%** | Leadership style, lack of recognition, workplace fatigue |
-
----
-
-## 💡 Final Conclusion & Recommendations
-
-> [!TIP]
-> ### 🏆 Strategic Focus: Mid-to-Late Career Retention
-> Early-career turnover (<3 years) is mostly natural attrition. The primary operational risk is the departure of **Established (7–10 yrs)** and **Veteran (11+ yrs)** personnel due to preventable work-environment dissatisfaction.
-
-### 🚀 Proposed Retention Strategy
-* **🔄 Conduct Mid-Career Check-Ins (Years 5–7): Run structured stay interviews and workload audits around year 5 and year 7 to spot burnout before staff decide to leave.
-* **⚖️ Support Work-Life Balance for Senior Staff: Offer flexible work options and targeted burnout prevention programs specifically designed for long-tenured employees.
-* **📢 Leadership Feedback Loops:** Conduct exit interview follow-ups focused on department culture, targeting DETE departments where dissatisfaction spikes.
-
----
-
-## 🛠️ Tools & Tech Stack
-
-```text
-Language     :  Python 3.10+
-Data Wrangling:  Pandas, NumPy
-Visualizations:  Matplotlib, Seaborn
-Environment  :  Jupyter Notebook / VS Code
-```
-
----
-
-## 📁 Repository Structure
-
-```text
-employee-exit-analysis/
-├── data/                # Raw survey datasets (DETE & TAFE)
-├── notebooks/           # Cleaned, step-by-step Jupyter analysis
-│   └── analysis.ipynb
-├── visuals/             # Exported high-res charts and plots
-├── .gitignore           # Git ignore rules
-└── README.md            # Documentation
-└── requirements.txt    # Project dependencies
-```
-
----
-
-## 🚀 How to Run the Project Locally
-
-1. **Clone the repository:**
-   ```bash
-   git clone  https://github.com/Kash4Code/employee-turnover-analysis.git
-   cd employee-turnover-analysis
-   ```
+   <img src="visuals/dissatisfaction_by_service_cat.png" alt="Dissatisfaction by Career Stage" width="600">
    
-2. **Set up a virtual environment**
-   ```bash
-   python -m venv venv
-   # Activate on Windows:
-   .\venv\Scripts\Activate.ps1
-   # Activate on Mac/Linux:
-   source venv/bin/activate
-   ```
-   
-2. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+3. **Each career stage has a distinct primary friction factor** — New hires cite career changes and relocation; Experienced staff (3-6 yrs) cite role progression and workload; Established staff (7-10 yrs) cite burnout and work-life balance; Veterans (11+ yrs) cite leadership style and lack of recognition.
+4. **The highest-risk window is specifically 7-10 years, not "senior staff" broadly** — Veteran resignation dissatisfaction (~48%) is elevated but slightly below the Established peak (~51%), meaning retention intervention is most urgent just before the 10-year mark, not simply for the most tenured group overall.
 
-3. **Run the analysis:**
-   Open `notebooks/analysis.ipynb` in Jupyter Notebook or VS Code and execute all cells.
+## Recommendations
+- **Run structured stay interviews around years 5 and 7** to catch burnout signals before staff reach the high-risk 7-10 year resignation window.
+- **Build targeted work-life balance and burnout-prevention programs** specifically for Established and Veteran staff, rather than applying generic retention programs uniformly across all tenure groups.
+- **Follow up on exit interviews by department**, focused on culture and leadership feedback, to identify which specific teams are driving the dissatisfaction spike.
 
----
+## Files
+- `data/dete_survey.csv`, `data/tafe_survey.csv` — raw source survey datasets
+- `notebooks/analysis.ipynb` — schema harmonization, dissatisfaction index construction, and segmentation analysis
+- `visuals/dissatisfaction_by_service_cat.png` — resignation rate by career stage chart
 
-## 🌟 Support & Feedback
+## Methodology
+DETE and TAFE tracked exits using entirely different survey formats, so the first step was harmonizing column names, categorical values, and missing-data conventions into a single unified schema. Nine separate dissatisfaction-related survey indicators (covering factors like workload, recognition, and work environment) were then combined into a single weighted dissatisfaction index, allowing responses from both institutes to be compared on the same scale.
 
-If you found this project helpful or insightful, please consider **starring** ⭐ the repository and **forking** 🍴 it to build upon it!
+Employees were segmented into four tenure-based career stages — New (<3 yrs), Experienced (3-6 yrs), Established (7-10 yrs), and Veteran (11+ yrs) — and the dissatisfaction-driven resignation rate was calculated within each group to isolate whether turnover was tenure-linked rather than uniform across the workforce.
 
-Have suggestions or feedback? Feel free to open an issue or connect with me:
-
-[![GitHub](https://img.shields.io/badge/GitHub-Kash4Code-181717?style=flat&logo=github)](https://github.com/Kash4Code)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat&logo=linkedin)](https://www.linkedin.com/in/kashinathrp/)
+**Limitations:** Exit surveys are self-selected and self-reported, meaning employees who leave without completing a survey (or who understate dissatisfaction to preserve references) are not captured, which likely means true dissatisfaction-driven turnover is underrepresented rather than overstated. The tenure boundaries (3, 6, and 10 years) are analytical groupings chosen for this study, not organizational definitions, so results should be read as directional trends rather than precise cutoffs.
